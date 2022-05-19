@@ -1,0 +1,282 @@
+/* COLORS */
+/*
+dark gold: #cc9c42
+light gold: #FFD369
+grey-white: #bfbfbf;
+white: #EEEEEE
+light grey-darken: #282d35
+light grey: #393E46
+light grey-lighten: #4c5159
+bg grey: #222831
+shadow grey: #141921
+*/
+
+/* @font-face {
+  font-family: Alagard;
+  src: url(alagard.ttf);
+} */
+
+@media (max-width: 2112px) {
+
+}
+
+@media (max-width: 1400px) {
+
+}
+
+@media (max-width: 1024px) {
+
+}
+
+@font-face {
+  font-family: Alice;
+  src: url("./utils/Alice.woff2") format("woff2");
+}
+
+html {
+  font-display: swap;
+}
+
+#layout-holder {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+:root {
+  /* touch-action: pan-x pan-y; */
+  /* display: flex;
+  flex-direction: column; */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.ANDtablet {
+  border: 1px solid #cc9c42;
+  border-radius: 24px;
+  box-shadow: -4px 10px 24px #141921;
+  background-image: linear-gradient(170deg, #393E46, #2d323a);
+}
+
+body {
+  color: #bfbfbf;
+  background-color: #222831;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-exa.png");
+  /* height: 100vh; */
+  max-width: 1440px;
+  margin: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px #141921;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #141921;
+  /* background-image: linear-gradient(180deg, #222831, #141921); */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Alice", serif; /*Alice*/
+  font-weight: normal;
+  padding: 0.5rem;
+}
+
+p, a, ul, ol, li {
+  font-family: "Alice", sans-serif; /*Philosopher*/
+  font-size: 18px;
+  line-height: 1.5rem;
+  padding: 0.5rem;
+}
+
+a {
+  color: #bfbfbf;
+  text-decoration: none;
+}
+
+.input-holder {
+  /* background-image: linear-gradient(170deg, #393E46, #2d323a); */
+  background-color: #393E46;
+  background-image: url("https://www.transparenttextures.com/patterns/egg-shell.png");
+  border: 1px solid #cc9c42;
+  border-radius: 8px;
+  width: 25%;
+  padding: 2rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: -2px 5px 20px #141921;
+  /* display: none;
+  transition: all 0.5s; */
+}
+.z1 {
+  position: relative;
+  z-index: 1;
+}
+
+input, textarea {
+  background-image: linear-gradient(170deg, #393E46, #2d323a);
+  border: 1px solid #cc9c42;
+  border-radius: 8px;
+  box-shadow: -2px 5px 20px #141921;
+  color: #bfbfbf;
+  margin: 0.5rem 0;
+  width:calc(100% - 1rem);
+
+  padding: 0.5rem;
+  font-family: Alice;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.holder {
+  width: 50%;
+  float: left;
+  /* background-image: linear-gradient(170deg, #393E46, #2d323a); */
+  background-color: #393E46;
+  background-image: url("https://www.transparenttextures.com/patterns/egg-shell.png");
+  border: 1px solid #cc9c42;
+  border-radius: 150px;
+  margin: 2rem 4rem;
+  padding: 4rem;
+  position: relative;
+  top: 0;
+  box-shadow: -2px 5px 20px #141921;
+}
+
+button {
+  background-image: url("https://www.transparenttextures.com/patterns/gun-metal.png");
+  /* background-image: url("https://www.transparenttextures.com/patterns/skulls.png"); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/mirrored-squares.png"); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png"); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png"); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/dimension.png"); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/shley-tree-2.png"); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/psychedelic.png"); */
+}
+
+.hover-btn {
+  font-family: "Alice", serif;
+  font-size: 17px;
+  color: #eee;
+  padding: 0.5rem 0.75rem;
+  /* border-radius: 80px; */
+  border-radius: 24px;
+  background-color: #393E46;
+  border: 1px solid #cc9c42;
+  transition: all 0.5s;
+  margin: 0.5rem 0;
+  background-color: #4c5159;
+  border-color: #FFD369;
+  box-shadow: -2px 5px 12px #141921;
+  transition: all 0.5s;
+  white-space: normal;
+}
+.hover-btn:active {
+  background-color: #cc9c42;
+  transform: translate(0,3px);
+  transition: all 0.2s;
+}
+
+/* @media (min-width: 1400px) {
+  .hover-btn {
+    font-family: "Alice", serif;
+    color: #eee;
+    padding: 0.5rem 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 24px;
+    background-color: #393E46;
+    border: 1px solid #cc9c42;
+    transition: all 0.5s;
+    box-shadow: none;
+    white-space: normal;
+  }
+
+  .hover-btn:hover {
+    background-color: #4c5159;
+    border-color: #FFD369;
+    transform: translate(0, -5px);
+    box-shadow: -2px 5px 12px #141921;
+    transition: all 0.5s;
+  }
+
+  .hover-btn:active {
+    background-color: #cc9c42;
+    transform: translate(0,-3px);
+    transition: all 0.2s;
+  }
+  .hover-btn:focus {
+    outline:0;
+  }
+  .hover-btn:focus-visible {
+    box-shadow: none;
+  }
+} */
+
+.add-btn {
+  position: absolute;
+  margin-left: 40%;
+  margin-top: 25px;
+  z-index: 1;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-area {
+  margin-top: 1rem;
+  padding: 1rem 0;
+  border: 1px solid #cc9c42;
+  border-radius: 8px;
+  box-shadow: -1px 2px 15px #141921;
+}
+
+th, td {
+  text-align: center;
+  padding: 1rem;
+  border-collapse: collapse;
+}
+
+tr {
+  background-color: none;
+  transition: all 0.5s;
+}
+
+tr:hover {
+  background-color: #4c5159;
+  transition: all 0.5s;
+}

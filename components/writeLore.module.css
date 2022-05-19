@@ -1,0 +1,82 @@
+.contributionHolder {
+  padding: 1rem;
+  margin: 10rem auto 4rem;
+  width: 90%;
+  background-image: linear-gradient(170deg, #393E46, #2d323a);
+  border: 1px solid #cc9c42;
+  border-radius: 24px;
+  box-shadow: -2px 5px 20px #141921;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imgPreviewHolder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.imgPreview {
+  width: 100%;
+  /* max-width: 300px; */
+  border: 1px solid #cc9c42;
+  border-radius: 24px;
+}
+
+.input {
+  font-family: "Alice", serif; /*Alice*/
+  font-weight: normal;
+  font-size: 1rem;
+  color: #bfbfbf;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contributorText {
+  width: fit-content;
+  /* margin: 0 auto 0.5rem; */
+  padding-left: 0.5rem;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.contributorHolder {
+  display: flex;
+  align-self: stretch;
+  /* justify-content: center; */
+  padding: 1rem 0;
+}
+
+.contributorImg {
+  border-radius: 24px;
+  width: 35vw;
+  height: 35vw;
+  border: 1px solid #cc9c42;
+  max-width: 100px;
+  max-height: 100px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.contributorInfo h3 {
+  font-size: 5vw;
+}
+
+@media (min-width: 640px) {
+  .contributionHolder {
+    width: 75%;
+  margin-top: 12rem;
+  }
+
+  .imgPreview {
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contributionHolder {
+    margin-top: 16rem;
+  }
+}
