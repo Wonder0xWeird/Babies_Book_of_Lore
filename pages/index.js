@@ -118,7 +118,14 @@ export default function BabyBookOfLore() {
             <h3>Connect your wallet, select the baby you would like to write for, and press the button below to proceed.</h3>
             <br />
             <button className="hover-btn" onMouseUp={() => {
-              router.push("/lore/WriteLore");
+              if (!currentAddress) {
+                alert("Please connect your wallet and select a baby before proceeding.")
+              } else {
+                router.push({
+                  pathname: "/lore/WriteLore",
+                  query: { currentAddress: currentAddress }
+                }, "/lore/WriteLore");
+              }
             }}>WRITE</button>
           </div>
         </div>

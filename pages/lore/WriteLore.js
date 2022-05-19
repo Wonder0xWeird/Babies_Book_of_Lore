@@ -6,14 +6,31 @@ import styles from "../../components/writeLore.module.css";
 import axios from "axios";
 import Link from "next/link";
 
-export default function MakeAContribution() {
+export async function getServerSideProps(context) {
+  if (!context.query.currentAddress){
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {
+      currentAddress: context.query.currentAddress
+    }
+  }
+}
+
+export default function MakeAContribution(props) {
   const CCContributionTitle = "Make A Contribution";
   const CCContributionDescription = "The Chaotic Compendium is a place for one and all cult members to record and ruminate over their travels across the Runiverse. No tale or tidbit is too grand or too grainy to share, for you sit amongst kinfolk of !magic and myth who cherish fables both big and small. Write your rune upon the wall, and if or when you're ready, transcribe it into the Book of Lore."
   const CCContributionImg = "/images/The Chaotic Compendium Complete.png";
   const CCContributionRunes = ["/images/runes/dol_rune.png", "/images/runes/ort_rune.png", "/images/runes/eld_rune.png", "/images/runes/lem_rune.png"]; // Passion
   const CCContributionReturn = "/";
 
-  const { actorAvatar } = useContext(ActorContext);
+  const { currentAddress, actorAvatar } = useContext(ActorContext);
 
   const router = useRouter();
 
