@@ -4,3 +4,10 @@
   max-width: 100px;
   margin: auto;
 }
+
+.postingHolder {
+  width: 300px;
+  position: fixed;
+  text-align: center;
+  padding: 1rem;
+}

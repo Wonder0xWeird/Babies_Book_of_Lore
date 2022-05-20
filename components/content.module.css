@@ -25,7 +25,7 @@
 
 @media (min-width: 768px) {
   .lorePost p {
-    columns: 100px 2;
+    /* columns: 100px 2; */
     column-gap: 2rem;
   }
 }

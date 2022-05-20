@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { ActorContext } from "../../components/actorContext";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout";
+import Posting from "../../components/posting";
 import styles from "../../components/writeLore.module.css";
 import axios from "axios";
 import Link from "next/link";
@@ -36,6 +37,7 @@ export default function MakeAContribution(props) {
 
   const [drafts, setDrafts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPosting, setIsPosting] = useState(false);
   const [input, setInput] = useState({
     img: actorAvatar.img,
     title: "",
@@ -72,6 +74,7 @@ export default function MakeAContribution(props) {
     if (input.title === "" || input.body === "" || input.img === ""){
       alert("Your contribution is missing a title, body, or image...");
     } else {
+      setIsPosting(true);
       const newContribution = {
         avatar: actorAvatar,
         content: {
@@ -97,8 +100,8 @@ export default function MakeAContribution(props) {
       <div className={styles.imgPreviewHolder}>
         <h2>Image Preview:</h2>
         {input.img !== "" ? <img className={styles.imgPreview} src={input.img}/> : <h5>Pending image URL...</h5>}
-
       </div>
+      {isPosting && <Posting />}
       <div className={styles.contributorHolder}>
         <img className={styles.contributorImg} src={actorAvatar.img} />
         <div className={styles.contributorInfo}>
