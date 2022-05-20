@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
 export default function MakeAContribution(props) {
   const CCContributionTitle = "Make A Contribution";
   const CCContributionDescription = "The Chaotic Compendium is a place for one and all cult members to record and ruminate over their travels across the Runiverse. No tale or tidbit is too grand or too grainy to share, for you sit amongst kinfolk of !magic and myth who cherish fables both big and small. Write your rune upon the wall, and if or when you're ready, transcribe it into the Book of Lore."
-  const CCContributionImg = "/images/The Chaotic Compendium Complete.png";
+  const CCContributionImg = "/images/book_of_lore.png";
   const CCContributionRunes = ["/images/runes/dol_rune.png", "/images/runes/ort_rune.png", "/images/runes/eld_rune.png", "/images/runes/lem_rune.png"]; // Passion
   const CCContributionReturn = "/";
 
@@ -37,10 +37,18 @@ export default function MakeAContribution(props) {
   const [drafts, setDrafts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [input, setInput] = useState({
-    img: "",
+    img: actorAvatar.img,
     title: "",
     body: ""
   })
+
+  useEffect(() => {
+    setInput({
+      img: actorAvatar.img,
+      title: "",
+      body: ""
+    })
+  }, [actorAvatar])
 
   // ACTIONS
   function handleInput(e) {
@@ -84,6 +92,8 @@ export default function MakeAContribution(props) {
   return (<Layout pageTitle={CCContributionTitle} pageDescription={CCContributionDescription} pageImg={CCContributionImg} pageRunes={CCContributionRunes} pageReturn={CCContributionReturn}>
     <div className={styles.contributionHolder}>
       <h1>Crafting Lore...</h1>
+      <h2>To post your lore, fill out the fields below and click submit.</h2>
+      <h3>If you have a different image you would like to use, you must first upload it to a 3rd party hosting site such as imgur (https://imgur.com/) or pinata (https://www.pinata.cloud/) and then replace your baby's image URL with the new image's URL in the first field below.</h3>
       <div className={styles.imgPreviewHolder}>
         <h2>Image Preview:</h2>
         {input.img !== "" ? <img className={styles.imgPreview} src={input.img}/> : <h5>Pending image URL...</h5>}
