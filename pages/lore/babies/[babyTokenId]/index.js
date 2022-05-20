@@ -24,7 +24,7 @@ export async function getServerSideProps(context) {
 export default function ABabysLore(props) {
   const CCLoreTitle = "Babies Book of Lore";
   const CCLoreDescription = "Presented herein for your delight and enjoyment is the Lore of "
-  const CCLoreImg = "/images/The Chaotic Compendium Complete.png";
+  const CCLoreImg = "/images/book_of_lore.png";
   const CCLoreRunes = ["/images/runes/ort_rune.png", "/images/runes/sol_rune.png"]; // Lore
   const CCLoreReturn = "/";
 
@@ -73,6 +73,7 @@ export default function ABabysLore(props) {
     <Layout pageTitle={CCLoreTitle} pageDescription={CCLoreDescription + `TEST`} pageImg={CCLoreImg} pageRunes={CCLoreRunes} pageReturn={CCLoreReturn}>
       <div className={styles.loreWriterHeader}>
         <h1>Presenting the Lore of:</h1>
+        <br />
         {isLoading ? <Loading /> :
         <div className={styles.loreWriterHolder}>
           <img className={styles.loreWriterImg} src={loreWriter.img} />

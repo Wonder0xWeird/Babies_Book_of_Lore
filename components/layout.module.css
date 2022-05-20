@@ -188,22 +188,15 @@
 
 /********** ACTOR ***********/
 #actor {
-
-
-
-
-  /* Bigger Screen
-  width: 300px;
-  padding: 2rem 1rem 1rem;
-  text-align: center; */
+  text-align: center;
 }
 
-/* .actorAvatarImg {
-  width: 20vw;
-  border: 1px solid #cc9c42;
-  border-radius: 24px;
-  background-image: url("https://www.transparenttextures.com/patterns/gun-metal.png");
-} */
+.selectAvatarPrompt {
+  position: absolute;
+  width: 100px;
+  margin-bottom: auto;
+  padding: 0;
+}
 
 #avatarSelector {
   width: 90%;
@@ -445,13 +438,14 @@
   position: absolute;
   opacity: 25%;
   width: fit-content;
-  left: 50%;
+  right: 0;
   /* bottom: 0; */
-  transform:translate(-50%, -100%);
+  transform:translate(0, -100%);
   align-items: center;
   display: flex;
   transition: all 0.5s;
   margin-top: auto;
+  margin-right: 1rem;
   padding: 0.2rem;
   border-radius: 24px;
   border: 1px solid #141921;
@@ -464,6 +458,13 @@
 .wonderLogoHolder:active {
   opacity: 100%;
   transition: all 0.25s;
+}
+
+@media (min-width: 1440px) {
+  /* .wonderLogoHolder {
+    transform:translate(-50%, -100%);
+    left: 50%;
+  } */
 }
 
 .wonderLogo {

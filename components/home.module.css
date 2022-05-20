@@ -77,6 +77,18 @@
   color: #cc9c42;
 }
 
+.recentLoreHeader {
+  text-align: center;
+}
+
+.loreSelectHolder {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0));
+  width: 100%;
+  margin: 2rem auto 4rem;
+  justify-content: center;
+}
 
 .feedbackHolder {
   width: 85%;
@@ -86,10 +98,6 @@
   margin: 2rem auto;
   position: relative;
   padding: 0.5rem;
-}
-
-.feedbackContent {
-
 }
 
 .feedbackHolder h3 {
@@ -119,6 +127,7 @@
 
 .feedbackerHolder {
   display: flex;
+  text-align: center;
   align-items: center;
   padding: 0.5rem 0;
   justify-content: center;
@@ -187,20 +196,19 @@
     margin-top: 14rem;
   }
 
-  .feedbackHolder {
+  /* .feedbackHolder {
     max-width: 300px;
     display: flex;
-    /* position: absolute; */
     position: fixed;
     bottom: 0;
     right: 0;
     margin: 1rem;
-  }
+  } */
 }
 
 @media (min-width: 1440px) {
   .homeContentHolder {
-    margin-top: 15rem;
+    margin-top: 18rem;
   }
   .horizontal {
     margin: 0 auto;

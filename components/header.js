@@ -74,7 +74,7 @@ export default function Header({...pageProps}) {
           </div>
           <div className={styles.headerText}>
             <h1 className={styles.pageTitle}>{pageProps.pageTitle}</h1>
-            <p className={styles.pageDescription}>{pageProps.pageDescription}</p>
+            {/* <p className={styles.pageDescription}>{pageProps.pageDescription}</p> */}
           </div>
           {currentAddress ? <Actor /> : <button className="hover-btn" onClick={connectWallet}>Connect</button>}
         </div>

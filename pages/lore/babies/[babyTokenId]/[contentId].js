@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
 export default function CompendiumContribution(props) {
   const CCLoreTitle = "Babies Book of Lore";
   const CCLoreDescription = "Presented herein for your delight and enjoyment is the Lore of "
-  const CCLoreImg = "/images/The Chaotic Compendium Complete.png";
+  const CCLoreImg = "/images/book_of_lore.png";
   const CCLoreRunes = ["/images/runes/ort_rune.png", "/images/runes/sol_rune.png"]; // Lore
   const CCLoreReturn = `/lore/babies/${props.babyTokenId}`;
 

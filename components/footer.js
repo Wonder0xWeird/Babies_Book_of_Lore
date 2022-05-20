@@ -7,10 +7,10 @@ export default function Footer() {
       <button className="hover-btn">HOME</button>
     </Link>
 
-    <Link href="/AboutW0nd3r">
+    <Link href="https://andtheneum-test.vercel.app/">
       <div className={styles.wonderLogoHolder}>
-        <img className={styles.wonderLogo} src="/images/wonder_weird_logo.png" alt="wonder_weird_logo"  />
-        <h3>Built by w0nd3r.eth</h3>
+        <h3>Powered by the <br/> Andtheneum</h3>
+        <img className={styles.wonderLogo} src="/images/FUO Cropped.png" alt="Fair_Unbalanced_Oppressor"  />
       </div>
     </Link>
 

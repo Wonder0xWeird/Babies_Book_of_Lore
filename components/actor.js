@@ -65,12 +65,10 @@ export default function Actor() {
   return (
     <>
       <div id={styles.actor}>
+        {/* <h3 className={styles.selectAvatarPrompt}>Select your avatar...</h3> */}
         <img className={`${styles.headerImg} ANDtablet`} src={actorAvatar.img} onClick={() => {
           setShowAvatarSelect(!showAvatarSelect);
         }}/>
-        {/* <button className={`${styles.avatarSelectBtn} hover-btn`} onClick={() => {
-          setShowAvatarSelect(!showAvatarSelect);
-        }}>{actorAvatar.name}</button> */}
       </div>
 
       <Fade in={showAvatarSelect} timeout={333}>

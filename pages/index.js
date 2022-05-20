@@ -19,7 +19,7 @@ export default function BabyBookOfLore() {
   const homePageDescriptionShort = "Welcome to the babies book of lore"
   //  All are welcome who know their way from, through, and to...
   const homePageDescriptionLong = homePageDescriptionShort + " The leftmost rune will always pop you up a layer, while the rightmost rune will manage my page descriptions' appearances."
-  const homePageImg = "/images/Robert.png";
+  const homePageImg = "/images/book_of_lore.png";
   const homePageRunes = ["/images/runes/amn_rune.png", "/images/runes/ral_rune.png", "/images/runes/mal_rune.png", "/images/runes/ist_rune.png", "/images/runes/ohm_rune.png"]; // Call to Arms
   const homePageReturn = "/";
 
@@ -113,9 +113,10 @@ export default function BabyBookOfLore() {
               <button type="submit" className="hover-btn">GO</button>
             </form>
           </div>
+
           <div className={styles.homeContent}>
             <h1>Write Lore</h1>
-            <h3>Connect your wallet, select the baby you would like to write for, and press the button below to proceed.</h3>
+            <h3>Connect your wallet, click the green flame and invite your babies into your wallet by their tokenId, select the baby you would like to write for, and press the "WRITE" button below to proceed.</h3>
             <br />
             <button className="hover-btn" onMouseUp={() => {
               if (!currentAddress) {
@@ -130,18 +131,6 @@ export default function BabyBookOfLore() {
           </div>
         </div>
 
-        {!width1440 && <hr className={styles.horizontal} />}
-
-        <div className={styles.loreSelectHolder}>
-          <h1>Recent Lore</h1>
-          {isLoading && <Loading />}
-          {contents.map((content, index) => (
-            <ContentHolder content={content} key={index} />
-          ))}
-        </div>
-
-        {!width1440 && <hr className={styles.horizontal} />}
-
         <div className={`${styles.feedbackHolder} ANDtablet`}>
           <Fade in={showAddFeedback} timeout={333}>
             <div id={styles.feedbackHandler} className="ANDtablet">
@@ -150,7 +139,8 @@ export default function BabyBookOfLore() {
               }}><FontAwesomeIcon icon={faXmark} style={{ width: "20px", fontSize: 20 }}/></button>
               <div className={styles.feedbackerHolder}>
                 <div className={styles.feedbackerInfo}>
-                  <h5>{currentAddress}</h5>
+                  <h6>{currentAddress}</h6>
+                  <h5>What do you like about this site, and what needs improvement?</h5>
                 </div>
               </div>
               <form onSubmit={(event)=>event.preventDefault()}>
@@ -166,10 +156,21 @@ export default function BabyBookOfLore() {
               </form>
             </div>
           </Fade>
-          <h3>ANDTHENEUM Feedback Box</h3>
+          <h3>Andtheneum Feedback Box</h3>
           <button className="hover-btn" onMouseUp={() => setShowAddFeedback(!showAddFeedback)}>Provide Feedback</button>
           <img src="/images/DUR_cropped.png" className={styles.feedbackDUR}/>
         </div>
+
+        {!width1440 && <hr className={styles.horizontal} />}
+
+        <h1 className={styles.recentLoreHeader}>Recent Lore</h1>
+        <div className={styles.loreSelectHolder}>
+          {isLoading && <Loading />}
+          {contents.map((content, index) => (
+            <ContentHolder content={content} key={index} />
+          ))}
+        </div>
+
       </Layout>
     )
 }
