@@ -66,12 +66,10 @@ export default function MakeAContribution(props) {
     if (actorAvatar.name === "A Chaos Portal Opens...") {
       alert("The ANDTHENEUM does not allow Chaos Portals to engage with its materials. Please step through the portal with an Avatar to fan a flame or make a contribution...");
       return
-    }
-    if (actorAvatar.universe !== "Forgotten Babies Wizard Orphanage") {
+    } else if (actorAvatar.universe !== "Forgotten Babies Wizard Orphanage") {
       alert("The ANDTHENEUM only allows babies from the Wizard Orphanage to write lore here. Please step through the portal with a baby to make a contribution");
       return
-    }
-    if (input.title === "" || input.body === "" || input.img === ""){
+    } else if (input.title === "" || input.body === "" || input.img === ""){
       alert("Your contribution is missing a title, body, or image...");
     } else {
       setIsPosting(true);

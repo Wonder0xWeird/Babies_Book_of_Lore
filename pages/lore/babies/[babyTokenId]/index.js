@@ -44,12 +44,29 @@ export default function ABabysLore(props) {
       if (props.babyTokenId !== undefined) {
         const loreWriterURI = await fbwoContract.tokenURI(props.babyTokenId);
         await axios.post("/api/cors", {uri: loreWriterURI}).then(response => {
-          setLoreWriter({
+          let iBaby;
+          if (response.data.image.substring(0,5) === "https") {
+            iBaby = {
               name: response.data.name,
               img: response.data.image,
               tokenId: props.babyTokenId,
               universe: "Forgotten Babies Wizard Orphanage"
-            })
+            }
+          } else {
+            iBaby = {
+              name: response.data.name,
+              img: "https" + response.data.image.substring(4, response.data.image.length),
+              tokenId: props.babyTokenId,
+              universe: "Forgotten Babies Wizard Orphanage"
+            }
+          }
+          setLoreWriter(iBaby);
+          // setLoreWriter({
+          //     name: response.data.name,
+          //     img: response.data.image,
+          //     tokenId: props.babyTokenId,
+          //     universe: "Forgotten Babies Wizard Orphanage"
+          //   })
         })
         await axios.get("/api/lore/get-one-babys-lore/" + props.babyTokenId).then(foundLore => {
           console.log("foundLore", foundLore.data);

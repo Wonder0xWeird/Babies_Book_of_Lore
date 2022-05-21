@@ -59,12 +59,29 @@ export default function BabyBookOfLore() {
     if (e.target.value !== "") {
       const newBabyURI = await fbwoContract.tokenURI(e.target.value);
       await axios.post("/api/cors", {uri: newBabyURI}).then(response => {
-        const iBaby = {
+        let iBaby;
+        if (response.data.image.substring(0,5) === "https") {
+          iBaby = {
             name: response.data.name,
             img: response.data.image,
             tokenId: e.target.value,
             universe: "Forgotten Babies Wizard Orphanage"
           }
+        } else {
+          iBaby = {
+            name: response.data.name,
+            img: "https" + response.data.image.substring(4, response.data.image.length),
+            tokenId: e.target.value,
+            universe: "Forgotten Babies Wizard Orphanage"
+          }
+        }
+        // const iBaby = {
+        //     name: response.data.name,
+        //     img: response.data.image,
+        //     tokenId: e.target.value,
+        //     universe: "Forgotten Babies Wizard Orphanage"
+        //   }
+
         setBabySearch(iBaby);
       })
     } else {

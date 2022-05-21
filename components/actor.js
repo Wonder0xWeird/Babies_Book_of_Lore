@@ -37,13 +37,26 @@ export default function Actor() {
     if (owner.toLowerCase() === currentAddress.toLowerCase()) {
       const newBabyURI = await fbwoContract.tokenURI(babyTokenId);
       await axios.post("/api/cors", {uri: newBabyURI}).then(response => {
-        const iBaby = {
+        // console.log(response.data.image.substring(0,5));
+        let iBaby;
+        if (response.data.image.substring(0,5) === "https") {
+          iBaby = {
             address: currentAddress,
             name: response.data.name,
             img: response.data.image,
             tokenId: babyTokenId,
             universe: "Forgotten Babies Wizard Orphanage"
           }
+        } else {
+          iBaby = {
+            address: currentAddress,
+            name: response.data.name,
+            img: "https" + response.data.image.substring(4, response.data.image.length),
+            tokenId: babyTokenId,
+            universe: "Forgotten Babies Wizard Orphanage"
+          }
+        }
+          console.log("iBaby", iBaby.img);
         if (actorNfts.some(avatar => avatar.name === response.data.name && avatar.tokenId.toString() === babyTokenId)) {
           console.log(currentAddress + " already owns " + response.data.name);
           alert("The ANDTHENEUM has already acknolwedged your adoption of " + response.data.name)
