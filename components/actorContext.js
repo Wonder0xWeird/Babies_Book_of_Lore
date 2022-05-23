@@ -130,6 +130,7 @@ export const ActorContextProvider = ({children}) => {
         // If Actor exists, fetch/refresh avatars, else save/load avatars
         const getActor = await axios.get("/api/get-actor/" + currentAddress);
         setActorNfts(getActor.data.avatars);
+        setActorAvatar(getActor.data.avatars.filter(avatar => avatar.name === "A Chaos Portal Opens...")[0])
 
         // CULL AVATARS transfered out of Actor's currentAddress
         for (const i = 0; i < getActor.data.avatars.length; i++) {

@@ -104,7 +104,7 @@ export default function Actor() {
           </div>
           <div className={styles.avatarSelectHolderWrapper}>
             <div className={styles.avatarSelectHolder}>
-              {actorNfts.map((nft, index) =>
+              {actorNfts.filter(nft => nft.name !== "A Chaos Portal Opens...").map((nft, index) =>
                 <div className={styles.avatarSelect} key={index} onClick={() => selectAvatar(index)}>
                   <img className={`${styles.avatarSelectImg} ANDtablet`} src={nft.img} />
                   <h3>{nft.name}</h3>

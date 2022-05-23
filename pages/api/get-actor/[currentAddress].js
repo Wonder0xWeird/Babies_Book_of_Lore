@@ -1,37 +1,56 @@
 import { Avatar, Actor, Universe } from "../../../utils/models";
 import clientPromise from "../../../lib/mongoosedb";
 
-// "/api/add-avatar"
+// "/api/get-actor"
 export default async function handler(req, res) {
 
   const connection = await clientPromise;
 
   try {
     const { currentAddress } = req.query;
-    // console.log("req.query", currentAddress);
     const actorQuery = Actor.where({address: currentAddress});
     actorQuery.findOne().then((foundActor) => {
-      // console.log(foundActor);
       if (foundActor) {
-        // console.log("Found an actor", foundActor);
-        res.send({
-          foundActor: true,
-          avatars: foundActor.avatars
-        })
+        if(foundActor.avatars.some(avatar => avatar.name === "A Chaos Portal Opens...")) {
+          res.send({
+            foundActor: true,
+            avatars: foundActor.avatars
+          })
+        } else {
+          foundActor.avatars.push({
+            address: currentAddress,
+            name: "A Chaos Portal Opens...",
+            nickname: "",
+            img: "/images/Chaos_Portal.png",
+            universe: "ANDTHENEUM"
+          })
+          foundActor.save();
+          res.send({
+            foundActor: true,
+            avatars: foundActor.avatars
+          })
+        }
       } else {
         console.log("No actor found");
         const newActor = new Actor({
           address: currentAddress,
           avatars: []
-        })
+        });
+        newActor.avatars.push({
+          address: currentAddress,
+          name: "A Chaos Portal Opens...",
+          nickname: "",
+          img: "/images/Chaos_Portal.png",
+          universe: "ANDTHENEUM"
+        });
         newActor.save();
         res.send({
           foundActor: false,
-          avatars: []
+          avatars: newActor.avatars
         })
       }
     }).catch((err) => {
-      handleError(err);
+      console.log(err);
     })
   } catch (err) {
     res.send("Error adding avatar:", err);

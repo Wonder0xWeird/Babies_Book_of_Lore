@@ -64,7 +64,7 @@ export default function MakeAContribution(props) {
 
   async function contribute() {
     if (actorAvatar.name === "A Chaos Portal Opens...") {
-      alert("The ANDTHENEUM does not allow Chaos Portals to engage with its materials. Please step through the portal with an Avatar to fan a flame or make a contribution...");
+      alert("The ANDTHENEUM does not allow Chaos Portals to post or comment. Please step through the portal with an Avatar to make a contribution...");
       return
     } else if (actorAvatar.universe !== "Forgotten Babies Wizard Orphanage") {
       alert("The ANDTHENEUM only allows babies from the Wizard Orphanage to write lore here. Please step through the portal with a baby to make a contribution");

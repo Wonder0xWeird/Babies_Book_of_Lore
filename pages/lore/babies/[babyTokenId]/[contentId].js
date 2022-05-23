@@ -26,7 +26,7 @@ export default function CompendiumContribution(props) {
   const CCLoreRunes = ["/images/runes/ort_rune.png", "/images/runes/sol_rune.png"]; // Lore
   const CCLoreReturn = `/lore/babies/${props.babyTokenId}`;
 
-  let { actorAvatar } = useContext(ActorContext);
+  let { actorAvatar, currentAddress } = useContext(ActorContext);
 
   const [content, setContent] = useState({});
   const [contributor, setContributor] = useState({});
@@ -45,7 +45,7 @@ export default function CompendiumContribution(props) {
       console.log("foundContent", foundContent.data);
       setContent(foundContent.data);
       setContributor(foundContent.data.avatar);
-      if (foundContent.data.engagements.flames.some(flamer => flamer.name === actorAvatar.name)) {
+      if (foundContent.data.engagements.flames.some(flamer => flamer._id === actorAvatar._id)) {
         setFlameOn(true);
       }
       setFlames({
@@ -61,7 +61,7 @@ export default function CompendiumContribution(props) {
   }, [])
 
   useEffect(() => {
-    if (flames.flamers.some(flamer => flamer.name === actorAvatar.name)) {
+    if (flames.flamers.some(flamer => flamer._id === actorAvatar._id)) {
       setFlameOn(true);
     } else {
       setFlameOn(false);
@@ -70,8 +70,8 @@ export default function CompendiumContribution(props) {
 
   // /compendium-content/handle-flame/[contentUniverse/contentId/flameOn] (actorAvatar)
   async function handleFlame() {
-    if (actorAvatar.name === "A Chaos Portal Opens...") {
-      alert("The ANDTHENEUM does not allow Chaos Portals to engage with its materials. Please connect your wallet and step through the portal with an Avatar to fan a flame or make a contribution...");
+    if (!currentAddress) {
+      alert("The ANDTHENEUM requires Actors to connect their wallet in order to engage with its materials.")
       return
     }
     if (!flameOn) {
@@ -79,16 +79,14 @@ export default function CompendiumContribution(props) {
         numFlames: prevState.numFlames + 1,
         flamers: [...prevState.flamers, actorAvatar]
       }))
-      const result = await axios.post("/api/lore/handle-flame/" + props.contentId + "/" + flameOn, actorAvatar).then(setFlameOn(!flameOn));
-      console.log(result.data);
     } else {
       setFlames((prevState) => ({
         numFlames: prevState.numFlames - 1,
-        flamers: [...prevState.flamers].filter(flamer => flamer.name !== actorAvatar.name)
+        flamers: [...prevState.flamers].filter(flamer => flamer._id !== actorAvatar._id)
       }))
-      const result = await axios.post("/api/lore/handle-flame/" + props.contentId + "/" + flameOn, actorAvatar).then(setFlameOn(!flameOn));
-      console.log(result.data);
     }
+    const result = await axios.post("/api/lore/handle-flame/" + props.contentId + "/" + flameOn, actorAvatar).then(setFlameOn(!flameOn));
+    console.log(result.data);
   }
 
   // Comment Actions
@@ -99,7 +97,7 @@ export default function CompendiumContribution(props) {
   // /compendium-content/post-comment/[contentUniverse/contentId] (newComment)
   async function postComment() {
     if (actorAvatar.name === "A Chaos Portal Opens...") {
-      alert("The ANDTHENEUM does not allow Chaos Portals to engage with its materials. Please step through the portal with an Avatar to fan a flame or make a contribution...");
+      alert("The ANDTHENEUM does not allow Chaos Portals to comment on its materials. Please step through the portal with an Avatar to make a contribution...");
       return
     }
     if (confirm("The ANDTHENEUM will accept your comment...")) {
