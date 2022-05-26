@@ -23,6 +23,8 @@ export default function Actor() {
 
   // Actions
   async function selectAvatar(avatarIndex) {
+    console.log("avatarIndex", avatarIndex);
+    console.log("actorNfts[avatarIndex]", actorNfts[avatarIndex]);
     setActorAvatar(actorNfts[avatarIndex]); //, {...actorNfts[avatarIndex], id: result.data.avatarId}
   }
 
@@ -30,14 +32,12 @@ export default function Actor() {
     setBabyInput(e.target.value);
   }
 
-
   async function addBaby(babyTokenId) {
     // Check if Actor owns requested Baby, if true add-avatar, else alert
     const owner = await fbwoContract.ownerOf(babyTokenId);
     if (owner.toLowerCase() === currentAddress.toLowerCase()) {
       const newBabyURI = await fbwoContract.tokenURI(babyTokenId);
       await axios.post("/api/cors", {uri: newBabyURI}).then(response => {
-        // console.log(response.data.image.substring(0,5));
         let iBaby;
         if (response.data.image.substring(0,5) === "https") {
           iBaby = {
@@ -56,7 +56,6 @@ export default function Actor() {
             universe: "Forgotten Babies Wizard Orphanage"
           }
         }
-          console.log("iBaby", iBaby.img);
         if (actorNfts.some(avatar => avatar.name === response.data.name && avatar.tokenId.toString() === babyTokenId)) {
           console.log(currentAddress + " already owns " + response.data.name);
           alert("The ANDTHENEUM has already acknolwedged your adoption of " + response.data.name)
@@ -104,12 +103,21 @@ export default function Actor() {
           </div>
           <div className={styles.avatarSelectHolderWrapper}>
             <div className={styles.avatarSelectHolder}>
-              {actorNfts.filter(nft => nft.name !== "A Chaos Portal Opens...").map((nft, index) =>
-                <div className={styles.avatarSelect} key={index} onClick={() => selectAvatar(index)}>
-                  <img className={`${styles.avatarSelectImg} ANDtablet`} src={nft.img} />
-                  <h3>{nft.name}</h3>
-                  <h4 className={styles.avatarSelectUniverse}>{nft.universe}</h4>
-                </div>
+              {actorNfts.map((nft, index) => {
+                if (nft.name !== "A Chaos Portal Opens...") {
+                  return (
+                    <div className={styles.avatarSelect} key={index} onClick={() => selectAvatar(index)}>
+                      <img className={`${styles.avatarSelectImg} ANDtablet`} src={nft.img} />
+                      <h3>{nft.name}</h3>
+                      <h4 className={styles.avatarSelectUniverse}>{nft.universe}</h4>
+                    </div>
+                  )
+                } else {
+                  return null;
+                }
+              }
+
+
               )}
               {loadingAvatars && <div className={styles.avatarSelect}>
                 <img className={`${styles.avatarSelectImg} ANDtablet`} src="/images/Chaos_Portal.png" />
@@ -135,3 +143,5 @@ export default function Actor() {
 
   )
 }
+
+// filter(nft => nft.name !== "A Chaos Portal Opens...").
