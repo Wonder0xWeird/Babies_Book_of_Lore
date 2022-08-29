@@ -115,10 +115,7 @@ export default function Actor() {
                 } else {
                   return null;
                 }
-              }
-
-
-              )}
+              })}
               {loadingAvatars && <div className={styles.avatarSelect}>
                 <img className={`${styles.avatarSelectImg} ANDtablet`} src="/images/Chaos_Portal.png" />
                 <h3>Loading...</h3>
